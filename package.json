@@ -1,0 +1,27 @@
+{
+  "name": "data-spread",
+  "version": "0.1.0",
+  "description": "Converts an object of named arrays into an array of objects",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --spec reporter"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:smlgbl/data-spread.git"
+  },
+  "keywords": [
+    "array",
+    "object",
+    "data-driven"
+  ],
+  "author": "Samuel Gabel",
+  "license": "Apache-v2",
+  "bugs": {
+    "url": "https://github.com/smlgbl/data-spread/issues"
+  },
+  "dependencies": {
+    "lodash": "~2.2.1",
+    "must": "~0.10.0"
+  }
+}
