@@ -4,7 +4,7 @@
   "description": "Converts an object of named arrays into an array of objects",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --spec reporter"
+    "test": "mocha --reporter spec"
   },
   "repository": {
     "type": "git",
