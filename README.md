@@ -77,7 +77,7 @@ describe('Test the API per country and version', function() {
 
   var spreadData = spread(testData);
 
-  dd('Check existence', function() {
+  dd(spreadData, function() {
     it('Check existence of offers in {country} with version {version}', function(data, done) {
       api.get(server.url + data.version + '/exists/' + data.country, function(res) {
         res.body.must.eql({value: true});
