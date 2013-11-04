@@ -1,6 +1,6 @@
 {
   "name": "data-spread",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Converts an object of named arrays into an array of objects",
   "main": "index.js",
   "scripts": {

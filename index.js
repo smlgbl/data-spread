@@ -1,5 +1,6 @@
 var _ = require('lodash');
 
+// From {name: [x ,y, z] } to [ [ {name: x}, {name: y}, {name: z}]]
 function fromObjectOfArraysToArraysOfObjects(o) {
   var arrayOfObjectArrays = [];
   for(var key in o) {
@@ -14,8 +15,7 @@ function fromObjectOfArraysToArraysOfObjects(o) {
   return arrayOfObjectArrays;
 }
 
-function multiJoin(a1, a2) {
-  if(!a1.length) return a2;
+function extendEachWithEach(a1, a2) {
   var joinedArray = [];
   for(var elemA1 in a1) {
     for(var elemA2 in a2) {
@@ -28,17 +28,20 @@ function multiJoin(a1, a2) {
   return joinedArray;
 }
 
+//  Join all Arrays into one
 function fromArrayOfArraysOfObjectsToArrayOfObjects(a) {
-  return a.reduce(function(previousValue, currentValue, index, array) {
-    return multiJoin(previousValue, currentValue);
-  });
+  if(a.length <= 0) {
+    return a;
+  } else {
+    return a.reduce(function(previousValue, currentValue, index, array) {
+      return extendEachWithEach(previousValue, currentValue);
+    });
+  }
 }
 
 module.exports = function(obj) {
-  if(Object.keys(obj).length > 0) {
     var arrayFromObj = fromObjectOfArraysToArraysOfObjects(obj);
     var arrayOfObjects = fromArrayOfArraysOfObjectsToArrayOfObjects(arrayFromObj);
     return arrayOfObjects;
-  } else return [];
 };
 

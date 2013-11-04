@@ -36,5 +36,54 @@ what you get is this:
   ]
 ```
 
-You see where it is going.
-Real-life example will follow.
+Real-life example
+
+Writing [mocha.js](http://visionmedia.github.io/mocha/) tests for a REST API, with different versions and different countries.
+
+```javascript
+var spread = require('data-spread');
+var expect = require('must');
+
+describe('Test the API per country and version', function() {
+  var testData = { 
+    version: ['v1', 'v2'],
+    country: ['de', 'en', 'it', 'pl', 'fr', 'es']
+  };
+
+  var spreadData = spread(testData);
+  spreadData.forEach(function(data) {
+    it('Check existence of offers in ' + data.country + ' on version ' + data.version, function(done) {
+      api.get(server.url + data.version + '/exists/' + data.country, function(res) {
+        res.body.must.eql({value: true});
+      });
+    });
+  });
+
+});
+```
+
+Or, if you're using [fluentsoftware/data-driven](https://github.com/fluentsoftware/data-driven) (or even my [fork](https://github.com/smlgbl/data-driven) )
+
+```javascript
+var spread = require('data-spread');
+var expect = require('must');
+var dd = require('data-driven');
+
+describe('Test the API per country and version', function() {
+  var testData = { 
+    version: ['v1', 'v2'],
+    country: ['de', 'en', 'it', 'pl', 'fr', 'es']
+  };
+
+  var spreadData = spread(testData);
+
+  dd('Check existence', function() {
+    it('Check existence of offers in {country} with version {version}', function(data, done) {
+      api.get(server.url + data.version + '/exists/' + data.country, function(res) {
+        res.body.must.eql({value: true});
+      });
+    });
+  });
+
+});
+```

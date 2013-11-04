@@ -67,4 +67,59 @@ describe('Convert Testdata', function() {
       {x: 3, y: 'c', z: 'w'},
     ]);
   });
+
+  it('Works with nested data', function() {
+    var obj = {
+      x: [1, 2],
+      y: [ {v: 1, n: 't'}, {v: 2, n: 'u'} ]
+    };
+
+    spread(obj).must.eql([
+      {
+        x: 1,
+        y: {v: 1, n: 't'}
+      },
+      {
+        x: 1,
+        y: {v: 2, n: 'u'}
+      },
+      {
+        x: 2,
+        y: {v: 1, n: 't'}
+      },
+      {
+        x: 2,
+        y: {v: 2, n: 'u'}
+      }
+    ]);
+  });
+
+  it('Works with inherited properties', function() {
+    var o = {
+      y: [1, 2]
+    };
+
+    var obj = Object.create(o);
+    obj.x = ['a', 'b'];
+
+    spread(obj).must.eql([
+      {
+        x: 'a',
+        y: 1
+      },
+      {
+        x: 'a',
+        y: 2
+      },
+      {
+        x: 'b',
+        y: 1
+      },
+      {
+        x: 'b',
+        y: 2
+      }
+    ]);
+  });
 });
+
