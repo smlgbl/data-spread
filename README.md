@@ -1,5 +1,6 @@
 data-spread
 ===========
+[![Build Status](https://travis-ci.org/smlgbl/data-spread.png)](https://travis-ci.org/smlgbl/data-spread)
 
 Converts an object of named arrays into an array of objects
 
