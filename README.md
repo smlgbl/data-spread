@@ -39,7 +39,7 @@ what you get is this:
 
 Real-life example
 
-Writing [mocha.js](http://visionmedia.github.io/mocha/) tests for a REST API, with different versions and different countries.
+Writing [mocha.js](http://mochajs.org/) tests for a REST API, with different versions and different countries.
 
 ```javascript
 var spread = require('data-spread');
