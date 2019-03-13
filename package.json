@@ -21,9 +21,10 @@
     "url": "https://github.com/smlgbl/data-spread/issues"
   },
   "dependencies": {
-    "lodash": "~4.17.11"
+    "lodash": "^4.17.11"
   },
   "devDependencies": {
-    "must": "~0.10.0"
+    "must": "^0.10.0",
+    "mocha": "^6.0.2"
   }
 }
